@@ -69,6 +69,7 @@ class ProdukController extends Controller
 
     public function store(createOrUpdateProdukRequest $request)
     {
+        // dd($request); die();
         return $this->produk->create($request->except('_token'));
     }
 

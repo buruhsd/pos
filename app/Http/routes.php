@@ -1,5 +1,8 @@
 <?php
 
+Route::get('tampilan', function(){
+	return view('layouts.backend');
+});
 require __DIR__.'/routes/frontend/auth.php'; 
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function(){

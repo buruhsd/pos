@@ -26,7 +26,8 @@ class createOrUpdateProdukRequest extends Request
         return [
             'nama'  => 'required', 
             'ref_produk_id' => 'required',
-            'mst_cabang_id' => 'required'
+            'mst_cabang_id' => 'required',
+            'barcode' => 'required|unique:mst_produk'
         ];
     }
 }
