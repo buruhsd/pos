@@ -11,6 +11,7 @@
     <script src="{{ elixir('js/app.js') }}"></script>
 
     <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('adminlte/sweetalert.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
