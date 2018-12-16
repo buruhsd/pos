@@ -11,14 +11,11 @@ class TransaksiRepo implements TransaksiRepoInterface {
 	// CRUD default
 	use defaultRepoTrait;
 
-
 	protected $model;
 
 	public function __construct(Model $model){
 		$this->model = $model;
 	}
-
-
 
 	public function getJmlTransaksiPerBln($mst_cabang_id = null, $bln, $thn)
 	{
@@ -41,12 +38,10 @@ class TransaksiRepo implements TransaksiRepoInterface {
 							 ->whereYear('created_at', '=', $thn)
 							 ->get();			
 		}
-
 		foreach($q as $list){
 			$tgl =  date('d', strtotime($list->created_at));
 			$data[ltrim($tgl, '0')] = $data[ltrim($tgl, '0')]+1;
 		}
-
 		$data = collect($data);
 
 		return $data;
