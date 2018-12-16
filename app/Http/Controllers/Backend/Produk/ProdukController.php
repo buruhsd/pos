@@ -154,9 +154,8 @@ class ProdukController extends Controller
            return view($this->base_view.'popup.cetak_barcode', $vars);
         }   
         $data = ['produk' => $produk, 'jml' => $jml];
-        // $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
-        // return $pdf->stream('barcode.pdf');
-        return view($this->base_view.'cetak_barcode.index', $data);
+        $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
+        return $pdf->stream('barcode.pdf');
     }
 
 
