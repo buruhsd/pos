@@ -18,13 +18,11 @@
 </head><body>
 	@for($i=1;$i<=$jml;$i++)
 			@if(!empty($produk->barcode))
-			{{$produk->barcode}}
- 					<img class="barcode_produk" src="data:image/png;base64,{!! DNS1D::getBarcodePNG($produk->barcode, 'C128') !!}" alt="barcode"/>
+ 					{{ '<img class="barcode_produk" src="data:image/png;base64,' . DNS1D::getBarcodePNG($produk->barcode, "C128") . '" alt="barcode"/>' }}
  			@else
- 			{{$produk->sku}}
- 					<img class="barcode_produk" src="data:image/png;base64,{!! DNS1D::getBarcodePNG($produk->sku, 'C128') !!}" alt="barcode"/>
+ 					{{ '<img class="barcode_produk" src="data:image/png;base64,' . DNS1D::getBarcodePNG($produk->sku, "C128") . '" alt="barcode"/>' }}
 			@endif
 	@endfor
 </body></html>
 
-<!-- data:image/png;base64,{{DNS1D::getBarcodePNG('11', 'C39')}} -->
+<!-- <img src="data:image/png,' . DNS1D::getBarcodePNG("4", "C39+") . '" alt="barcode"   /> -->
