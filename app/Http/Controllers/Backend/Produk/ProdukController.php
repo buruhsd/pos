@@ -13,6 +13,7 @@ use App\Repositories\Contracts\Mst\ProdukRepoInterface;
 use App\Repositories\Contracts\Ref\ProdukRepoInterface as refProdukRepoInterface;
 use App\Repositories\Contracts\Ref\SatuanProdukRepoInterface;
 use Illuminate\Http\Request;
+use App\Models\Ref\Gambar;
 
 class ProdukController extends Controller
 {
@@ -22,6 +23,7 @@ class ProdukController extends Controller
     protected $mst_cabang;
     protected $stok;
     protected $satuan_barang;
+    protected $gambar;
 
     public function __construct(ProdukRepoInterface $produk, 
     							refProdukRepoInterface $ref_produk,
@@ -69,8 +71,19 @@ class ProdukController extends Controller
 
     public function store(createOrUpdateProdukRequest $request)
     {
-        // dd($request); die();
         return $this->produk->create($request->except('_token'));
+        
+    }
+
+    public function storeImage(Request $request){
+        foreach ($request->gambar as $gambar) {
+            $gambar = new Gambar();
+            $gambar->nama = $gambar;
+            $gambar->gambar = $gambar;
+            $gambar->ref_produk_id = $data->id;
+            $gambar->save();
+        }
+        return $data;
     }
 
 
@@ -127,7 +140,7 @@ class ProdukController extends Controller
     {
         $keterangan = ['tambah stok' => 'tambah stok', 
                        'pengurangan stok' => 'pengurangan stok',
-                       'stok awal'  => 'stok awal'
+                       // 'stok awal'  => 'stok awal'
                        ];
         $produk = $this->produk->find($id);
         $vars = compact('produk', 'keterangan');
@@ -141,6 +154,8 @@ class ProdukController extends Controller
         $jml_stok = $request->stok_barang;
         $mst_user_id = \Auth::user()->id;
         $keterangan = $request->keterangan;
+
+        // var_dump($keterangan); die();
         return $this->stok->updateStok($mst_produk_id, $jml_stok, $mst_user_id, $keterangan);
     }
 
@@ -195,6 +210,15 @@ class ProdukController extends Controller
         }        
     }
 
+    public function tambah_stok(){
+        $backend_ref_tambah_stok_produk = true;
+        $vars = compact('backend_ref_tambah_stok_produk');
 
+        return view($this->base_view.'tambahstok.index', $vars); 
+    }
+
+    public function search_tambah_stock(){
+        return view($this->base_view.'tambahstok.komponen.popup.form_tambah'); 
+    }
 
 }

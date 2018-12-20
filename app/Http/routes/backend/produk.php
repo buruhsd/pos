@@ -76,7 +76,15 @@ Route::group(['namespace'	=> 'Produk'], function(){
 		'uses'	=> 'ProdukController@do_import'
 	]);
 
-		
+	Route::get('produk/tambah_produk', [
+		'as' => 'backend_produk.tambah_stok',
+		'uses' => 'ProdukController@tambah_stok'
+	]);
+
+	Route::get('produk/seacrh_tambah_produk', [
+		'as' => 'backend_produk.search_tambah_stock',
+		'uses' => 'ProdukController@search_tambah_stock'
+	]);
 
 
 });

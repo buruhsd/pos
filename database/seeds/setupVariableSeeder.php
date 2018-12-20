@@ -16,7 +16,7 @@ class setupVariableSeeder extends Seeder
     	// nama aplikasi
         $sv = SetupVariable::where('variable', '=', 'nama_aplikasi')->first();
         if(count($sv)<=0){
-        	$data = ['variable' => 'nama_aplikasi', 'value' => 'Sistem Informasi Penjualan'];
+        	$data = ['variable' => 'nama_aplikasi', 'value' => 'Sistem POS'];
         	SetupVariable::create($data);
         }
  

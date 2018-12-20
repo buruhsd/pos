@@ -25,6 +25,11 @@ class UserLevelSeeder extends Seeder
         	UserLevel::create(['id' => 2, 'nama'	=> 'karyawan']);
         }
 
+        $check = UserLevel::where('id', '=', 3)->first();
+        if(count($check)<=0){
+            UserLevel::create(['id' => 3, 'nama'    => 'member']);
+        }
+
         
 
 

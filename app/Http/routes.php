@@ -1,7 +1,16 @@
 <?php
 
 Route::get('tampilan', function(){
-	return view('layouts.backend');
+	return view('layouts.shop');
+});
+
+Route::get('home/add_to_cart', [
+		'uses'	=> 'Backend\Home\TransaksiController@add_to_cart',
+		'as'	=> 'backend_home.ddd'
+	]);
+
+Route::get('product_quick_view', function(){
+	return view('konten.shop.product.product_quick_view');
 });
 require __DIR__.'/routes/frontend/auth.php'; 
 
