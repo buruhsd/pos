@@ -18,7 +18,7 @@ class HistoryStokRepo implements HistoryStokRepoInterface {
 		$this->model = $model;
 	}
 
- 	public function updateStok($mst_produk_id, $jml_stok, $mst_user_id, $keterangan = null)
+ 	public function updateStok($mst_produk_id, $jml_stok, $mst_user_id, $keterangan)
  	{
  		$p_obj = app('App\Repositories\Contracts\Mst\ProdukRepoInterface');
  		$p = $p_obj->find($mst_produk_id);
