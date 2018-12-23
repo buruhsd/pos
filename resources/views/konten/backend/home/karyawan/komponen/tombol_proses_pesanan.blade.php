@@ -30,7 +30,7 @@
 					return false;
 				}
 
-				kembalian = parseInt(bayar) - parseInt(harus_dibayar);
+				kembalian = parseInt(bayar) - (parseInt(harus_dibayar) - parseInt(diskon));
 
 
 		
