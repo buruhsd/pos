@@ -102,6 +102,15 @@
 		<td>
 			{!! number_format($transaksi->diskon) !!}
 		</td>
+
+	</tr>
+	<tr>
+		<td>
+			Kembali
+		</td>
+		<td>
+			{!! number_format($transaksi->nominal_kembalian) !!}
+		</td>
 	</tr>
 	@else
 	<tr>
