@@ -45,6 +45,11 @@ Route::group(['namespace'	=> 'Produk'], function(){
 		'uses'	=> 'ProdukController@stok_kosong'
 	]);
 
+	Route::post('produk/storeImage',[
+		'as'	=> 'backend_produk.storeImage',
+		'uses'	=> 'ProdukController@storeImage'
+	]);
+
 
 	// kelola stok barang
 	Route::get('produk/kelola_stok/{id}',[

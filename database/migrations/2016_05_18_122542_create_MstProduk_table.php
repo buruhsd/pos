@@ -25,6 +25,7 @@ class CreateMstProdukTable extends Migration
             $table->string('gambar')->nullable();
             $table->string('keterangan');
             $table->integer('mst_cabang_id');
+            $table->boolean('featured')->default(0);
             $table->timestamps();
         });
     }

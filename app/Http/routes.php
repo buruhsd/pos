@@ -1,8 +1,6 @@
 <?php
 
-Route::get('tampilan', function(){
-	return view('layouts.shop');
-});
+Route::get('tampilan', 'Frontend\FrontendController@index');
 
 Route::get('home/add_to_cart', [
 		'uses'	=> 'Backend\Home\TransaksiController@add_to_cart',

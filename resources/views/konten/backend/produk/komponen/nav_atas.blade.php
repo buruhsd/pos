@@ -20,10 +20,10 @@
           <i class='fa fa-th-list'></i> Jenis Satuan Produk
       </a>
   </li>
-  <li role="presentation" @if(isset($backend_ref_tambah_stok_produk)) class="active" @endif>
+  <!-- <li role="presentation" @if(isset($backend_ref_tambah_stok_produk)) class="active" @endif>
       <a href="{!! route('backend_produk.tambah_stok') !!}">
           <i class='fa fa-th-list'></i> Tambah Stok
       </a>
-  </li>
+  </li> -->
   @endif
 </ul>

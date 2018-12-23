@@ -14,7 +14,10 @@ class CreateRefProdukTable extends Migration
     {
         Schema::create('ref_produk', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sub_ref_produk_id')->default(0);
+            $table->boolean('featured')->default(0);
             $table->string('nama');
+            $table->text('gambar')->nullable();
             $table->timestamps();
         });
     }

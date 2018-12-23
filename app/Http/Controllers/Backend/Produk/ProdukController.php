@@ -14,6 +14,7 @@ use App\Repositories\Contracts\Ref\ProdukRepoInterface as refProdukRepoInterface
 use App\Repositories\Contracts\Ref\SatuanProdukRepoInterface;
 use Illuminate\Http\Request;
 use App\Models\Ref\Gambar;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -46,15 +47,21 @@ class ProdukController extends Controller
         $search = $request->get('search');
         if($search){
             $filter  = [['nama', 'like', '%'.$search.'%']];
+            $filter_barcode = [['barcode', 'like', '%'.$search.'%']];
         }else{
             $filter = [];
+            $filter_barcode = [];
         }
 
         if(\Session::has('mst_cabang_id')){
             $filter = array_add($filter, 'mst_cabang_id', \Session::get('mst_cabang_id'));
+            $filter_barcode = array_add($filter_barcode, 'mst_cabang_id', \Session::get('mst_cabang_id'));
         }
-
+        // var_dump($filter); die();
         $produk = $this->produk->all(10, $filter);
+        if (count($produk) <= 0) {
+            $produk = $this->produk->all(10, $filter_barcode);
+        }
         $backend_produk_home = true;
         $vars = compact('produk', 'backend_produk_home');
     	return view($this->base_view.'index', $vars);
@@ -71,7 +78,24 @@ class ProdukController extends Controller
 
     public function store(createOrUpdateProdukRequest $request)
     {
-        return $this->produk->create($request->except('_token'));
+        // dd($request->gambar); die();
+        $produk = $this->produk->create($request->except('_token', 'gambar'));
+        foreach ($request->gambar as $photo) {
+            $file_data = $photo;
+            $file_name = 'image_' . time() . '.png'; //generating unique file name;
+
+            if ($file_data != "") { // storing image in storage/app/public Folder
+               Storage::disk('public')->put($file_name, base64_decode($file_data));
+            }
+
+            $image = new Gambar;
+            $image->nama = $file_name;
+            $image->ref_produk_id = $produk->id;
+            $image->gambar = $file_name;
+            $image->save();
+            // $filename = $request->gambar->store('photos');
+        }
+        return $produk;
         
     }
 

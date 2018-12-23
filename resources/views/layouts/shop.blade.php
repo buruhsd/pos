@@ -109,23 +109,10 @@
                                     <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
                                     <div class="select-custom">
                                         <select id="cat" name="cat">
-                                            <option value="">All Categories</option>
-                                            <option value="4">Fashion</option>
-                                            <option value="12">- Women</option>
-                                            <option value="13">- Men</option>
-                                            <option value="66">- Jewellery</option>
-                                            <option value="67">- Kids Fashion</option>
-                                            <option value="5">Electronics</option>
-                                            <option value="21">- Smart TVs</option>
-                                            <option value="22">- Cameras</option>
-                                            <option value="63">- Games</option>
-                                            <option value="7">Home &amp; Garden</option>
-                                            <option value="11">Motors</option>
-                                            <option value="31">- Cars and Trucks</option>
-                                            <option value="32">- Motorcycles &amp; Powersports</option>
-                                            <option value="33">- Parts &amp; Accessories</option>
-                                            <option value="34">- Boats</option>
-                                            <option value="57">- Auto Tools &amp; Supplies</option>
+                                            <option value="ALL">All Categories</option>
+                                            @foreach($category as $category)
+                                            <option value="{{$category->id}}">{{$category->nama}}</option>
+                                            @endforeach
                                         </select>
                                     </div><!-- End .select-custom -->
                                     <button class="btn" type="submit"><i class="icon-magnifier"></i></button>
@@ -278,6 +265,7 @@
                         </div><!-- End .home-slider -->
 
                         <div class="row">
+                            @foreach($featured_category as $featured_category)
                             <div class="col-md-4">
                                 <div class="banner banner-image">
                                     <a href="#">
@@ -285,22 +273,7 @@
                                     </a>
                                 </div><!-- End .banner -->
                             </div><!-- End .col-md-4 -->
-
-                            <div class="col-md-4">
-                                <div class="banner banner-image">
-                                    <a href="#">
-                                        <img src="{{asset('shop/assets/images/banners/banner-2.jpg')}}" alt="banner">
-                                    </a>
-                                </div><!-- End .banner -->
-                            </div><!-- End .col-md-4 -->
-
-                            <div class="col-md-4">
-                                <div class="banner banner-image">
-                                    <a href="#">
-                                        <img src="{{asset('shop/assets/images/banners/banner-3.jpg')}}" alt="banner">
-                                    </a>
-                                </div><!-- End .banner -->
-                            </div><!-- End .col-md-4 -->
+                            @endforeach
                         </div><!-- End .row -->
 
                         <div class="mb-3"></div><!-- margin -->
@@ -308,6 +281,7 @@
                         <h2 class="carousel-title">Featured Products</h2>
 
                         <div class="home-featured-products owl-carousel owl-theme owl-dots-top">
+                            @foreach($featured_produk as $featured_produk)
                             <div class="product">
                                 <figure class="product-image-container">
                                     <a href="product.html" class="product-image">
@@ -343,150 +317,7 @@
                                     </div><!-- End .product-action -->
                                 </div><!-- End .product-details -->
                             </div><!-- End .product -->
-
-                            <div class="product">
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="{{asset('shop/assets/images/products/home-featured-2.jpg')}}" alt="product">
-                                    </a>
-                                    <a href="product_quick_view" class="btn-quickview">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
-                                    <h2 class="product-title">
-                                        <a href="product.html">Bluetooth Headset</a>
-                                    </h2>
-                                    <div class="price-box">
-                                        <span class="product-price">$28.00</span>
-                                    </div><!-- End .price-box -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                            <span>Add to Wishlist</span>
-                                        </a>
-
-                                        <a href="product.html" class="paction add-cart" title="Add to Cart">
-                                            <span>Add to Cart</span>
-                                        </a>
-
-                                        <a href="#" class="paction add-compare" title="Add to Compare">
-                                            <span>Add to Compare</span>
-                                        </a>
-                                    </div><!-- End .product-action -->
-                                </div><!-- End .product-details -->
-                            </div><!-- End .product -->
-
-                            <div class="product">
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="{{asset('shop/assets/images/products/home-featured-3.jpg')}}" alt="product">
-                                    </a>
-                                    <a href="product_quick_view" class="btn-quickview">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:40%"></span><!-- End .ratings -->
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
-                                    <h2 class="product-title">
-                                        <a href="product.html">MSK02 Headset</a>
-                                    </h2>
-                                    <div class="price-box">
-                                        <span class="product-price">$28.00</span>
-                                    </div><!-- End .price-box -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                            <span>Add to Wishlist</span>
-                                        </a>
-
-                                        <a href="product.html" class="paction add-cart" title="Add to Cart">
-                                            <span>Add to Cart</span>
-                                        </a>
-
-                                        <a href="#" class="paction add-compare" title="Add to Compare">
-                                            <span>Add to Compare</span>
-                                        </a>
-                                    </div><!-- End .product-action -->
-                                </div><!-- End .product-details -->
-                            </div><!-- End .product -->
-
-                            <div class="product">
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="{{asset('shop/assets/images/products/home-featured-4.jpg')}}" alt="product">
-                                    </a>
-                                    <a href="product_quick_view" class="btn-quickview">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:0%"></span><!-- End .ratings -->
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
-                                    <h2 class="product-title">
-                                        <a href="product.html">Noise CT</a>
-                                    </h2>
-                                    <div class="price-box">
-                                        <span class="product-price">$28.00</span>
-                                    </div><!-- End .price-box -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                            <span>Add to Wishlist</span>
-                                        </a>
-
-                                        <a href="product.html" class="paction add-cart" title="Add to Cart">
-                                            <span>Add to Cart</span>
-                                        </a>
-
-                                        <a href="#" class="paction add-compare" title="Add to Compare">
-                                            <span>Add to Compare</span>
-                                        </a>
-                                    </div><!-- End .product-action -->
-                                </div><!-- End .product-details -->
-                            </div><!-- End .product -->
-
-                            <div class="product">
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="{{asset('shop/assets/images/products/home-featured-5.jpg')}}" alt="product">
-                                    </a>
-                                    <a href="product_quick_view" class="btn-quickview">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:50%"></span><!-- End .ratings -->
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
-                                    <h2 class="product-title">
-                                        <a href="product.html">Stereo Headset</a>
-                                    </h2>
-                                    <div class="price-box">
-                                        <span class="product-price">$28.00</span>
-                                    </div><!-- End .price-box -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                            <span>Add to Wishlist</span>
-                                        </a>
-
-                                        <a href="product.html" class="paction add-cart" title="Add to Cart">
-                                            <span>Add to Cart</span>
-                                        </a>
-
-                                        <a href="#" class="paction add-compare" title="Add to Compare">
-                                            <span>Add to Compare</span>
-                                        </a>
-                                    </div><!-- End .product-action -->
-                                </div><!-- End .product-details -->
-                            </div><!-- End .product -->
+                            @endforeach
                         </div><!-- End .featured-proucts -->
 
                         <div class="mb-6"></div><!-- margin -->
@@ -746,151 +577,14 @@
 
                     <aside class="sidebar-home col-lg-3 order-lg-first">
                         <div class="side-menu-container">
-                            <h2>CATEGORIES</h2>
+                            <h2>BRAND</h2>
 
                             <nav class="side-nav">
                                 <ul class="menu menu-vertical sf-arrows">
-                                    <li class="active"><a href="index.html"><i class="icon-home"></i>Home</a></li>
-                                    <li>
-                                        <a href="category.html" class="sf-with-ul"><i class="icon-briefcase"></i>
-                                        Categories</a>
-                                        <div class="megamenu megamenu-fixed-width">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="menu-title">
-                                                                <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="category.html">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                                                <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                                                <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                                                <li><a href="category.html">Left Sidebar</a></li>
-                                                                <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                                                <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                                                <li><a href="category-horizontal-filter1.html">Horizontal Filter1</a></li>
-                                                                <li><a href="category-horizontal-filter2.html">Horizontal Filter2</a></li>
-                                                            </ul>
-                                                        </div><!-- End .col-lg-6 -->
-                                                        <div class="col-lg-6">
-                                                            <div class="menu-title">
-                                                                <a href="#">Variations 2</a>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="#">Product List Item Types</a></li>
-                                                                <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a></li>
-                                                                <li><a href="category.html">3 Columns Products</a></li>
-                                                                <li><a href="category-4col.html">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                                                <li><a href="category-5col.html">5 Columns Products</a></li>
-                                                                <li><a href="category-6col.html">6 Columns Products</a></li>
-                                                                <li><a href="category-7col.html">7 Columns Products</a></li>
-                                                                <li><a href="category-8col.html">8 Columns Products</a></li>
-                                                            </ul>
-                                                        </div><!-- End .col-lg-6 -->
-                                                    </div><!-- End .row -->
-                                                </div><!-- End .col-lg-8 -->
-                                                <div class="col-lg-4">
-                                                    <div class="banner">
-                                                        <a href="#">
-                                                            <img src="{{asset('shop/assets/images/menu-banner-2.jpg')}}" alt="Menu banner">
-                                                        </a>
-                                                    </div><!-- End .banner -->
-                                                </div><!-- End .col-lg-4 -->
-                                            </div>
-                                        </div><!-- End .megamenu -->
-                                    </li>
-                                    <li class="megamenu-container">
-                                        <a href="product.html" class="sf-with-ul"><i class="icon-video"></i>Products</a>
-                                        <div class="megamenu">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="menu-title">
-                                                                <a href="#">Variations</a>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="product.html">Horizontal Thumbnails</a></li>
-                                                                <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                                                <li><a href="product.html">Inner Zoom</a></li>
-                                                                <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
-                                                                <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
-                                                            </ul>
-                                                        </div><!-- End .col-lg-4 -->
-                                                        <div class="col-lg-4">
-                                                            <div class="menu-title">
-                                                                <a href="#">Variations</a>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
-                                                                <li><a href="product-simple.html">Simple Product</a></li>
-                                                                <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
-                                                            </ul>
-                                                        </div><!-- End .col-lg-4 -->
-                                                        <div class="col-lg-4">
-                                                            <div class="menu-title">
-                                                                <a href="#">Product Layout Types</a>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="product.html">Default Layout</a></li>
-                                                                <li><a href="product-extended-layout.html">Extended Layout</a></li>
-                                                                <li><a href="product-full-width.html">Full Width Layout</a></li>
-                                                                <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
-                                                                <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                                                <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
-                                                            </ul>
-                                                        </div><!-- End .col-lg-4 -->
-                                                    </div><!-- End .row -->
-                                                </div><!-- End .col-lg-8 -->
-                                                <div class="col-lg-4">
-                                                    <div class="banner">
-                                                        <a href="#">
-                                                            <img src="{{asset('shop/assets/images/menu-banner.jpg')}}" alt="Menu banner" class="product-promo">
-                                                        </a>
-                                                    </div><!-- End .banner -->
-                                                </div><!-- End .col-lg-4 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .megamenu -->
-                                    </li>
-                                    <li>
-                                        <a href="#" class="sf-with-ul"><i class="icon-docs-inv"></i>Pages</a>
-
-                                        <ul>
-                                            <li><a href="cart.html">Shopping Cart</a></li>
-                                            <li><a href="#">Checkout</a>
-                                                <ul>
-                                                    <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
-                                                    <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
-                                                    <li><a href="checkout-review.html">Checkout Review</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Dashboard</a>
-                                                <ul>
-                                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="#">Blog</a>
-                                                <ul>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single.html">Blog Post</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                            <li><a href="#" class="login-link">Login</a></li>
-                                            <li><a href="forgot-password.html">Forgot Password</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#" class="sf-with-ul"><i class="icon-sliders"></i>Features</a>
-                                        <ul>
-                                            <li><a href="#">Header Types</a></li>
-                                            <li><a href="#">Footer Types</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><i class="icon-cat-gift"></i>Special Offer!</a></li>
-                                    <li><a href="#"><i class="icon-star-empty"></i>Buy Porto!</a></li>
+                                    <li class="active"><a href="index.html"></i>SAMSUNG</a></li>
+                                    
+                                    <li><a href="#"></i>NOKIA</a></li>
+                                    <li><a href="#"></i>HUAWEI</a></li>
                                 </ul>
                             </nav>
                         </div><!-- End .side-menu-container -->

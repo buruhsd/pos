@@ -80,26 +80,86 @@
 			<!-- <div class="col-md-12">
 				<div class="form-group">
 					{!! Form::label('gambar', 'Gambar : ') !!}
-					<div class="images">
-						<div class="pic">
-						  add
-						</div>
-					</div>
+					
+					<div class="input-group control-group increment" >
+			          <input type="file" name="gambar[]" id="gambar" class="gambar form-control">
+			          <div class="input-group-btn"> 
+			            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+			          </div>
+			        </div>
+			        <div class="clone hide">
+			          <div class="control-group input-group" style="margin-top:10px">
+			            <input type="file" name="gambar[]" id="gambar" class="gambar form-control">
+			            <div class="input-group-btn"> 
+			              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+			            </div>
+			          </div>
+			        </div>
+						
 				</div>
 			</div> -->
+			<div class="col-md-12">
+				<div class="images">
+					<div class="pic">Add Image</div>
+				</div>
+			</div>
+		</div>
 			<div class="col-md-12">
 				<hr>
 				<button id='simpan' class='btn btn-info pull-right'><i class='fa fa-floppy-o'></i> SIMPAN</button>
 			</div>
 			
-		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
+$( document ).ready(function() {
+	var img = [];
+console.log( "ready!" );
+uploadImage()
+function uploadImage() {
+      var button = $('.images .pic')
+      var uploader = $('<input type="file" accept="image/*" />')
+      var images = $('.images')
+      
+      button.on('click', function () {
+        uploader.click()
+      })
+      
+      uploader.on('change', function () {
+          var reader = new FileReader()
+          reader.onload = function(event) {
+          	img.push(event.target.result);
+            images.prepend('<div class="img" style="background-image: url(\'' + event.target.result + '\');" rel="'+ event.target.result  +'"><span>remove</span></div>')
+          }
+          reader.readAsDataURL(uploader[0].files[0])
+  
+       })
+      
+      images.on('click', '.img', function () {
+        $(this).remove()
+      })
+    
+    }
+
+
 $('#simpan').click(function(){
 	$('#pesan').removeClass('alert alert-danger animated shake').html('');
 
+// var fileInput = document.getElementsByClassName('images');
+// var gambar = [];
+// console.log(img);
+// console.log(fileInput);
+// 	for (var i = 0; i < fileInput.length; i++) {
+// 		for (var x = 0; x < fileInput[i].files.length; x++) {
+// 			gambar.push(fileInput[i].files[x]);
 
+// 			// console.log(fileInput[i].files[x]);
+// 		}
+		
+// 	}
+
+// console.log(gambar);
 form_data ={
 	mst_user_id : '{!! Auth::user()->id !!}',
 	barcode : $('#barcode').val(),
@@ -108,18 +168,28 @@ form_data ={
 	harga_reseller : $('#harga_reseller').val(),
 	stok_barang : $('#stok_barang').val(),
 	ref_satuan_produk_id : $('#ref_satuan_produk_id').val(),
-	gambar : $('#gambar').val(),
+	gambar : img,
 	nama : $('#nama').val(),
 	ref_produk_id : $('#ref_produk_id').val(),
 	mst_cabang_id : $('#mst_cabang_id').val(),
 	keterangan : $('#keterangan').val(),
  	_token : '{!! csrf_token() !!}'
 }
-$('#simpan').attr('disabled', 'disabled');
+$.ajaxSetup(
+{
+    headers:
+    {
+        'X-CSRF-Token': '{!! csrf_token() !!}'
+    }
+});
+
+// $('#simpan').attr('disabled', 'disabled');
+console.log(form_data);
 	$.ajax({
 		url : '{{ route("backend_produk.store") }}',
 		data : form_data,
 		type : 'post',
+		
 		error:function(xhr, status, error){
 			$('#simpan').removeAttr('disabled');
 		 	$('#pesan').addClass('alert alert-danger animated shake').html('<b>Error : </b><br>');
@@ -131,7 +201,7 @@ $('#simpan').attr('disabled', 'disabled');
 		      //    alert('error! terjadi kesalahan pada sisi server!')
 		},
 		success:function(ok){
-			 //window.location.reload();
+			 window.location.reload();
 			 swal({
 			 	title : 'success',
 			 	text : 'data telah tersimpan',
@@ -144,15 +214,33 @@ $('#simpan').attr('disabled', 'disabled');
 })
 
 
-
 $('#pesan').click(function(){
 	$('#pesan').fadeOut(function(){
 		$('#pesan').html('').show().removeClass('alert alert-danger');
 	});
 })
 
+});
 </script>
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+    });
+
+</script> -->
+
+<!-- <script type="text/javascript">
 	(function ($) {
   $(document).ready(function () {
     
@@ -288,6 +376,6 @@ $('#pesan').click(function(){
     
   })
 })(jQuery)
-</script>
+</script> -->
 
 

@@ -25,21 +25,7 @@ class HistoryStokRepo implements HistoryStokRepoInterface {
  		if(count($p)>0){
  			$stok_awal = $p->stok_barang;
 
- 			// if($stok_awal < $jml_stok){
- 			// 	// stok_masuk
- 			// 	$stok_masuk = $jml_stok - $stok_awal;
- 			// 	$stok_keluar = 0;
- 			// }else{
- 			// 	$stok_keluar = $stok_awal - $jml_stok;
- 			// 	$stok_masuk = 0;
- 			// }
-
-
-	 		// if($stok_keluar == 0){
-	 		// 	$stok_sisa = $stok_awal + $stok_masuk;
-	 		// }else{
-	 		// 	$stok_sisa = $stok_awal - $stok_keluar;
-	 		// }
+ 			
 
 	 		// $stok_sisa = $stok_awal + $jml_stok;
  			// $stok_keluar = 0;
@@ -52,6 +38,22 @@ class HistoryStokRepo implements HistoryStokRepoInterface {
  				$stok_sisa = $stok_awal - $jml_stok;
  				$stok_keluar = $jml_stok;
  				$stok_masuk = 0;
+ 			}else{
+ 				if($stok_awal < $jml_stok){
+	 				// stok_masuk
+	 				$stok_masuk = $jml_stok - $stok_awal;
+	 				$stok_keluar = 0;
+	 			}else{
+	 				$stok_keluar = $stok_awal - $jml_stok;
+	 				$stok_masuk = 0;
+	 			}
+
+
+		 		if($stok_keluar == 0){
+		 			$stok_sisa = $stok_awal + $stok_masuk;
+		 		}else{
+		 			$stok_sisa = $stok_awal - $stok_keluar;
+		 		}
  			}
 
 	 		$data = ['mst_produk_id' 	=> $mst_produk_id,

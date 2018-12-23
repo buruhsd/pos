@@ -31,6 +31,13 @@ class UserLevelSeeder extends Seeder
         }
 
         
+        $u_obj = app('App\Repositories\Contracts\Mst\UserRepoInterface');
+        $data = ['nama'   => 'admin',
+                'email' => 'admin@gmail.com',
+                'password'  => 'rahasia',
+                'ref_user_level_id' => 1
+                ];
+        $u_obj->create($data);
 
 
     }
