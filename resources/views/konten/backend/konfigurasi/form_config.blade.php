@@ -3,6 +3,11 @@
 	<div class="form-group">
 		{!! Form::label('nama_aplikasi', 'Nama Aplikasi : ') !!}
 		{!! Form::text('nama_aplikasi', setup_variable('nama_aplikasi'), ['id' => 'nama_aplikasi', 'class' => 'form-control']) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('header_struk', 'Header Struk : ') !!}
+		{!! Form::text('header_struk', setup_variable('header_struk'), ['id' => 'header_struk', 'class' => 'form-control']) !!}
 	</div>	
 
 

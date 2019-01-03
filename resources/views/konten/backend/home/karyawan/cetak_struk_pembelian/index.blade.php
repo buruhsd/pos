@@ -25,7 +25,8 @@
 </style>
 </head><body>
 	 <h4 style="margin:2px;">
-	 	{!! $transaksi->fk__mst_cabang !!}
+	 	<!-- {!! $transaksi->fk__mst_cabang !!} -->
+	 	{!! setup_variable('header_struk') !!}
 	 </h4>
 	 <b>
 	 	{!! $cabang->alamat !!}

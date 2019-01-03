@@ -6,6 +6,7 @@ form_data ={
 	nama_aplikasi : $('#nama_aplikasi').val(),
 	backup_db : $('#backup_db').val(),
 	jam_backup : $('#jam_backup').val(),
+	header_struk : $('#header_struk').val(),
  	_token : '{!! csrf_token() !!}'
 }
 $('#simpan').attr('disabled', 'disabled');

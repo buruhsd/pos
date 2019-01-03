@@ -38,15 +38,18 @@ class KonfigurasiController extends Controller
      */
     public function update(Request $request)
     {
+        // var_dump($request->header_struk); die();
         $this->validate($request, [
             'nama_aplikasi' => 'required',
             'backup_db' => 'required',
             'jam_backup'    => 'required|date_format:H:i',
+            'header_struk' => 'required'
         ]);
 
         $this->sv->updateByVariable('nama_aplikasi', $request->nama_aplikasi);
         $this->sv->updateByVariable('backup_db', $request->backup_db);
         $this->sv->updateByVariable('jam_backup', $request->jam_backup);
+        $this->sv->updateByVariable('header_struk', $request->header_struk);
 
         return 'ok';
 
