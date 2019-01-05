@@ -8,6 +8,13 @@
 			{!! Form::label('jml', 'Jumlah barcode : ') !!}
 			{!! Form::text('jml', 1, ['id' => 'jml', 'class' => 'form-control', 'placeholder' => 'jml barcode...']) !!}
 		</div>
+		<div class="form-group">
+			{!! Form::label('Size', 'Layout : ') !!}
+			<select name="size" form="carform" id="size" class="form-control">
+			  <option value="lebar">Lebar</option>
+			  <option value="kecil">Kecil</option>
+			</select>
+		</div>
 	</div>
 </div>
 <div class="row">
@@ -36,10 +43,13 @@
             });
 	$('#do_cetak_barcode').click(function(){
 		jml = $('#jml').val();
+		size = $('#size').val();
+
+		console.log(size);
 		if(jml == ''){
 			return false;
 		}
-		window.open('{!! route("backend_produk.cetak_barcode", $produk->id) !!}?jml='+jml);
+		window.open('{!! route("backend_produk.cetak_barcode", $produk->id) !!}?jml='+jml+'&size='+size);
 
 	});
 </script>

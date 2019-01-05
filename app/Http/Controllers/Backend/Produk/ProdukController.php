@@ -193,7 +193,12 @@ class ProdukController extends Controller
            return view($this->base_view.'popup.cetak_barcode', $vars);
         }   
         $data = ['produk' => $produk, 'jml' => $jml];
-        $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
+        if ($request->get('size') == 'lebar') {
+            $pdf = \PDF::loadView($this->base_view.'cetak_barcode.wide_barcode', $data);
+        }else{
+            $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
+        }
+        
         return $pdf->stream('barcode.pdf');
     }
 
