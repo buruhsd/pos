@@ -43,13 +43,17 @@ class KonfigurasiController extends Controller
             'nama_aplikasi' => 'required',
             'backup_db' => 'required',
             'jam_backup'    => 'required|date_format:H:i',
-            'header_struk' => 'required'
+            'header_struk' => 'required',
+            'footer_struk' => 'required',
+            'nama_toko' => 'required'
         ]);
 
         $this->sv->updateByVariable('nama_aplikasi', $request->nama_aplikasi);
         $this->sv->updateByVariable('backup_db', $request->backup_db);
         $this->sv->updateByVariable('jam_backup', $request->jam_backup);
         $this->sv->updateByVariable('header_struk', $request->header_struk);
+         $this->sv->updateByVariable('footer_struk', $request->footer_struk);
+          $this->sv->updateByVariable('nama_toko', $request->nama_toko);
 
         return 'ok';
 

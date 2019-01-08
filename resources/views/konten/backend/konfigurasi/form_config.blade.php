@@ -6,10 +6,20 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('nama_toko', 'Nama Toko : ') !!}
+		{!! Form::text('nama_toko', setup_variable('nama_toko'), ['id' => 'nama_toko', 'class' => 'form-control']) !!}
+	</div>
+
+
+	<div class="form-group">
 		{!! Form::label('header_struk', 'Header Struk : ') !!}
 		{!! Form::text('header_struk', setup_variable('header_struk'), ['id' => 'header_struk', 'class' => 'form-control']) !!}
 	</div>	
 
+	<div class="form-group">
+		{!! Form::label('footer_struk', 'Footer : ') !!}
+		{!! Form::text('footer_struk', setup_variable('footer_struk'), ['id' => 'footer_struk', 'class' => 'form-control']) !!}
+	</div>
 
 	<div class="row">
 		<div class="col-md-4">

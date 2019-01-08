@@ -25,7 +25,7 @@
 </style>
 </head><body>
 	 <h4 style="margin:2px;">
-	 	{!! $transaksi->fk__mst_cabang !!}
+	 	{!! setup_variable('nama_toko') !!}
 	 	{!! setup_variable('header_struk') !!}
 	 </h4>
 	 <b>
@@ -131,6 +131,8 @@ Operator : {!! $transaksi->fk__mst_user !!}
 Periksa barang sebelum dibeli.
 <br>
 barang yg sudah dibeli tdk dapat dikembalikan atau ditukar.
+<br>
+{!! setup_variable('footer_struk') !!}
 <script type="text/javascript">
 	this.print();
 	this.close();
