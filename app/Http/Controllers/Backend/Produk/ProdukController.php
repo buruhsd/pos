@@ -15,6 +15,8 @@ use App\Repositories\Contracts\Ref\SatuanProdukRepoInterface;
 use Illuminate\Http\Request;
 use App\Models\Ref\Gambar;
 use Illuminate\Support\Facades\Storage;
+use Excel;
+use Milon\Barcode\DNS1D;
 
 class ProdukController extends Controller
 {
@@ -186,20 +188,41 @@ class ProdukController extends Controller
 
     public function cetak_barcode($mst_produk_id, Request $request)
     {
-        $jml = $request->get('jml');
+        $jml = 1;
         $produk = $this->produk->find($mst_produk_id);
-        $vars = compact('produk', 'jml');
-        if(!$jml){
-           return view($this->base_view.'popup.cetak_barcode', $vars);
-        }   
+        // $vars = compact('produk', 'jml');
+        // if(!$jml){
+        //    return view($this->base_view.'popup.cetak_barcode', $vars);
+        // }   
         $data = ['produk' => $produk, 'jml' => $jml];
-        if ($request->get('size') == 'lebar') {
-            $pdf = \PDF::loadView($this->base_view.'cetak_barcode.wide_barcode', $data);
-        }else{
-            $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
-        }
+        // if ($request->get('size') == 'lebar') {
+        //     $pdf = \PDF::loadView($this->base_view.'cetak_barcode.wide_barcode', $data);
+        // }else{
+        //     $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
+        // }
+
+        // $pdf->setPaper('a5', 'potrait');
+
+        $filename = 'File Name';
+        $image = base64_decode(DNS1D::getBarcodePNG($produk->barcode, "C128"));
+
+        $safeName = str_random(10).'.'.'png';
+        Storage::disk('public')->put($safeName, $image);
+
+        return response()->download(storage_path('app/public/' . $safeName));
+
+        // return Response::download($file, 'filename.pdf', $headers);
+        // var_dump($safeName); die();
+        // Excel::create($filename, function($excel) use ($data){
+
+        //    $excel->sheet('sheet name', function($sheet) use ($data){
+        //         $sheet->loadView($this->base_view.'cetak_barcode.wide_barcode', $data);
+        //    });
+
+        // })->export('xls');
         
-        return $pdf->stream('barcode.pdf');
+        // return $pdf->stream('barcode.pdf');
+        // return view($this->base_view.'cetak_barcode.index', $data);
     }
 
 

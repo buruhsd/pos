@@ -79,6 +79,8 @@ class insertTransaksiPenjualanJob extends Job
     private function insert_transaksi()
     {
         $subtotal_pembayaran = \Cart::total() - $this->diskon;
+
+        // var_dump($subtotal_pembayaran); die();
         
         $transaksi = app('App\Repositories\Contracts\Mst\TransaksiRepoInterface');
         // insert data ke dlm tabel transaksi

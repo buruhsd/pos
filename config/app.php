@@ -167,6 +167,8 @@ return [
         GrahamCampbell\Dropbox\DropboxServiceProvider::class,
         // Jenssegers\Rollbar\RollbarServiceProvider::class,
 
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
 
 
 
@@ -226,6 +228,8 @@ return [
         'Cart'      => \Gloudemans\Shoppingcart\Facades\Cart::class,
         'PDF'       => Barryvdh\DomPDF\Facade::class,
         'Dropbox'   => GrahamCampbell\Dropbox\Facades\Dropbox::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
   
 
