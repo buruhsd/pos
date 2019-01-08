@@ -19,7 +19,9 @@
 	@for($i=1;$i<=$jml;$i++)
 			@if(!empty($produk->barcode))
  					{!! '<img class="barcode_produk" src="data:image/png;base64,' . DNS1D::getBarcodePNG($produk->barcode, "C128") . '" alt="barcode"/>' !!}
- 					<p>kjfgh</p>
+ 					<figcaption>{{$produk->barcode}}</figcaption>
+ 					<figcaption>{{$produk->harga_jual}}</figcaption>
+ 					<figcaption>{{$produk->nama}}</figcaption>
  			@else
  					{!! '<img class="barcode_produk" src="data:image/png;base64,' . DNS1D::getBarcodePNG($produk->sku, "C128") . '" alt="barcode"/>' !!}
 			@endif

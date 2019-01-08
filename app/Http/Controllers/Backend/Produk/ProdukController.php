@@ -188,28 +188,28 @@ class ProdukController extends Controller
 
     public function cetak_barcode($mst_produk_id, Request $request)
     {
-        $jml = 1;
+        $jml = $request->get('jml');
         $produk = $this->produk->find($mst_produk_id);
-        // $vars = compact('produk', 'jml');
-        // if(!$jml){
-        //    return view($this->base_view.'popup.cetak_barcode', $vars);
-        // }   
+        $vars = compact('produk', 'jml');
+        if(!$jml){
+           return view($this->base_view.'popup.cetak_barcode', $vars);
+        }   
         $data = ['produk' => $produk, 'jml' => $jml];
-        // if ($request->get('size') == 'lebar') {
-        //     $pdf = \PDF::loadView($this->base_view.'cetak_barcode.wide_barcode', $data);
-        // }else{
-        //     $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
-        // }
+        if ($request->get('size') == 'lebar') {
+            $pdf = \PDF::loadView($this->base_view.'cetak_barcode.wide_barcode', $data);
+        }else{
+            $pdf = \PDF::loadView($this->base_view.'cetak_barcode.index', $data);
+        }
 
-        // $pdf->setPaper('a5', 'potrait');
+        $pdf->setPaper('a5', 'potrait');
 
-        $filename = 'File Name';
-        $image = base64_decode(DNS1D::getBarcodePNG($produk->barcode, "C128"));
+        // $filename = 'File Name';
+        // $image = base64_decode(DNS1D::getBarcodePNG($produk->barcode, "C128"));
 
-        $safeName = str_random(10).'.'.'png';
-        Storage::disk('public')->put($safeName, $image);
+        // $safeName = str_random(10).'.'.'png';
+        // Storage::disk('public')->put($safeName, $image);
 
-        return response()->download(storage_path('app/public/' . $safeName));
+        // return response()->download(storage_path('app/public/' . $safeName));
 
         // return Response::download($file, 'filename.pdf', $headers);
         // var_dump($safeName); die();
@@ -222,7 +222,7 @@ class ProdukController extends Controller
         // })->export('xls');
         
         // return $pdf->stream('barcode.pdf');
-        // return view($this->base_view.'cetak_barcode.index', $data);
+        return view($this->base_view.'cetak_barcode.index', $data);
     }
 
 
