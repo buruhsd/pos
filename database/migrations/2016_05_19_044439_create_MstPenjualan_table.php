@@ -14,7 +14,7 @@ class CreateMstPenjualanTable extends Migration
     {
         Schema::create('mst_penjualan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mst_detail_produk_id'); //relasi ke tabel detail_produk
+            $table->integer('mst_produk_id'); //relasi ke tabel detail_produk
             $table->integer('harga_produk');
             $table->integer('uang_diterima');
             $table->integer('uang_kembalian');
