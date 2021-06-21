@@ -13,7 +13,7 @@ class RenameMstDetailProdukIdToMstProdukIdInMstHistoryStokTable extends Migratio
     public function up()
     {
         Schema::table('mst_history_stok', function (Blueprint $table) {
-            $table->renameColumn('mst_detail_produk_id', 'mst_produk_id');
+            
         });
     }
 
@@ -24,8 +24,6 @@ class RenameMstDetailProdukIdToMstProdukIdInMstHistoryStokTable extends Migratio
      */
     public function down()
     {
-        Schema::table('mst_history_stok', function (Blueprint $table) {
-            $table->renameColumn('mst_produk_id', 'mst_detail_produk_id');
-        });
+        
     }
 }
