@@ -13,7 +13,7 @@ class RenameMstDetailProdukIdToMstProdukIdInMstPenjualanTable extends Migration
     public function up()
     {
         Schema::table('mst_penjualan', function (Blueprint $table) {
-            $table->renameColumn('mst_detail_produk_id', 'mst_produk_id');
+           
         });
     }
 
@@ -24,8 +24,6 @@ class RenameMstDetailProdukIdToMstProdukIdInMstPenjualanTable extends Migration
      */
     public function down()
     {
-        Schema::table('mst_penjualan', function (Blueprint $table) {
-            $table->renameColumn('mst_produk_id', 'mst_detail_produk_id');
-        });
+       
     }
 }
