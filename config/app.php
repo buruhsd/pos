@@ -164,7 +164,7 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
         \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        GrahamCampbell\Dropbox\DropboxServiceProvider::class,
+        //GrahamCampbell\Dropbox\DropboxServiceProvider::class,
         // Jenssegers\Rollbar\RollbarServiceProvider::class,
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
@@ -227,7 +227,7 @@ return [
         'DNS2D'     => Milon\Barcode\Facades\DNS2DFacade::class,   
         'Cart'      => \Gloudemans\Shoppingcart\Facades\Cart::class,
         'PDF'       => Barryvdh\DomPDF\Facade::class,
-        'Dropbox'   => GrahamCampbell\Dropbox\Facades\Dropbox::class,
+        //'Dropbox'   => GrahamCampbell\Dropbox\Facades\Dropbox::class,
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
