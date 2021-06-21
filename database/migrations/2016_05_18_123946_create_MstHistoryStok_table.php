@@ -14,7 +14,7 @@ class CreateMstHistoryStokTable extends Migration
     {
         Schema::create('mst_history_stok', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mst_detail_produk_id');
+            $table->integer('mst_produk_id');
             $table->string('keterangan');
             $table->integer('stok_masuk');
             $table->integer('stok_keluar');
