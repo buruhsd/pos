@@ -8,9 +8,9 @@
     "animate.css": "~3.5.1",
     "bootstrap-sass": "^3.0.0",
     "font-awesome": "~4.5.0",
-    "gulp": "^3.9.1",
-    "hover.css": "~2.0.2",
-    "laravel-elixir": "^5.0.0",
+    "gulp": "^4.0.2",
+    "hover.css": "~2.3.2",
+    "laravel-elixir": "^6.0.0-18",
     "wow.js": "~1.1.2"
   },
   "dependencies": {
